@@ -1,0 +1,8 @@
+apiVersion: v1 # Descriptor conforms to version v1 of Kubernetes API
+kind: Pod # Select Pod resource
+metadata:
+  name: hello-kube-label1 # The name of the pod
+spec:
+containers:
+    - image: 080196/hello-redis # Image to create the container
+      name: hello-kube # 

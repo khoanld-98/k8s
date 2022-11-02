@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: demosvc
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: staging
+  template:
+    metadata:
+      labels:
+       app: staging
+    spec:
+      containers:
+        - name: demo-replicaset
+          image: khoanld98/demo-k8s
+          ports:
+            - containerPort: 3000           
+---
+#service controllers
+apiVersion: v1 
+kind: Service
+metadata:
+  name: demosvc
+spec:
+  selector:
+   app: staging
+  ports:
+    - port: 3000 # port service
+      targetPort: 3000 #port container

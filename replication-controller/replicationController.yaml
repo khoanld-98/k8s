@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: dem-orec 
+spec:
+  replicas: 2 # so luong cua pod
+  selector: # xac dinh pod nao se dc rc quan ly
+    app: kube # gia tri label
+  template: # pod template
+    metadata:
+      name: kube
+      labels:
+        app: kube # gia tri label container xu ly
+    spec:
+      containers:
+        - name: demorc # ten cua container
+          image: khoanld98/demo-k8s #ten cua image
+          ports:
+            - containerPort: 3000
